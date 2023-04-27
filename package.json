@@ -1,7 +1,7 @@
 {
   "name": "code-feedback",
-  "displayName": "code-feedback",
-  "description": "",
+  "displayName": "Code Snippet Feedback - 代码片段反馈",
+  "description": "一个对项目中代码片段进行反馈的插件",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.77.0"
@@ -14,10 +14,34 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-feedback.helloWorld",
-        "title": "Hello World"
+        "command": "code-feedback.openCodeSnippetFeedbackPanel",
+        "title": "open code snippet feedback"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-feedback",
+          "title": "代码片段反馈",
+          "icon": "resources/feedback.svg"
+        }
+      ]
+    },
+    "views": {
+      "code-feedback": [
+        {
+          "id": "code-snippet",
+          "name": "代码片段",
+          "type": "webview"
+        },
+        {
+          "id": "demo-use",
+          "name": "使用演示",
+          "type": "webview",
+          "visibility": "collapsed"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
