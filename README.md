@@ -13,5 +13,5 @@
 
 ## 使用插件
 <!-- 插入一个图片 相对路径 -->
-![插件使用演示](https://gitlab.com/liusheng22/code-feedback/-/raw/main/src/assets/image/demonstration.gif)
 
+![插件使用演示](https://gitlab.com/liusheng22/code-feedback/-/raw/main/resources/image/demonstration.gif)
