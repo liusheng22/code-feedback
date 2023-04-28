@@ -2,7 +2,13 @@
   "name": "code-feedback",
   "displayName": "Code Snippet Feedback - 代码片段反馈",
   "description": "一个对项目中代码片段进行反馈的插件",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "liusheng",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:liusheng22/code-feedback.git"
+  },
+  "icon": "resources/icons/feedback.png",
   "engines": {
     "vscode": "^1.77.0"
   },
@@ -23,7 +29,7 @@
         {
           "id": "code-feedback",
           "title": "代码片段反馈",
-          "icon": "resources/feedback.svg"
+          "icon": "resources/icons/feedback.svg"
         }
       ]
     },
