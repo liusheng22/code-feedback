@@ -62,14 +62,20 @@ const getFileGitBlame = async () => {
   });
 
 
-  /**
-   * 对 gitBlameArr 进行处理
-   * - 仅取出选中的代码行 (startLine + 1) - (endLine + 1)
-   * - 去掉名称 item.author 为"Not Committed Yet"的
-   * - 对 item.author 去重
-   * - 返回选中的代码行
-   */
-  var selectedCodeArr = gitBlameArr.filter((item: any) => {
+  let selectedCodeArr = filterGitBlame({ gitBlameArr, startLine, endLine });
+
+  return selectedCodeArr;
+};
+
+/**
+ * 对 gitBlameArr 进行处理
+ * - 仅取出选中的代码行 (startLine + 1) - (endLine + 1)
+ * - 去掉名称 item.author 为"Not Committed Yet"的
+ * - 对 item.author 去重
+ * - 返回选中的代码行
+ */
+const filterGitBlame = ({gitBlameArr, startLine, endLine} : any) => {
+  let selectedCodeArr = gitBlameArr.filter((item: any) => {
     return item.lineNum >= (startLine + 1) && item.lineNum <= (endLine + 1);
   }).filter((item: any) => {
     return item.author !== 'Not Committed Yet';
@@ -82,7 +88,6 @@ const getFileGitBlame = async () => {
     }
     return acc;
   }, []);
-
   return selectedCodeArr;
 };
 

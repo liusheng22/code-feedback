@@ -15,7 +15,7 @@ export function post(url: string, data: any, callback?: any) {
       result += chunk;
     });
     res.on('end', () => {
-      callback(result);
+      callback && callback(result);
     });
   });
   req.on('error', (err) => {
@@ -39,7 +39,7 @@ export function postHttps(url: string, data: any, callback: any) {
       result += chunk;
     });
     res.on('end', () => {
-      callback(result);
+      callback && callback(result);
     });
   });
   req.on('error', (err) => {

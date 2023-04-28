@@ -1,6 +1,7 @@
 import { WebviewView, WebviewViewProvider } from 'vscode';
 import * as vscode from 'vscode';
 import { WebviewHtml } from '../webview/demonstration-html';
+import { WebviewUtils } from '../utils/uri';
 
 export class DemoWebview implements WebviewViewProvider {
   constructor(
@@ -42,7 +43,9 @@ export class DemoWebview implements WebviewViewProvider {
   }
 
   previewImage(webview: any) {
-    let imageUri = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'src', 'assets', 'image', 'demonstration.gif'));
+    let webviewUtils = new WebviewUtils(DemoWebview.webviewView);
+    let { path2Uri } = webviewUtils;
+    let imageUri = path2Uri('image/demonstration.gif');
 
     // 打开预览面板
     const panel = vscode.window.createWebviewPanel(

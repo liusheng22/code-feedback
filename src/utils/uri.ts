@@ -8,7 +8,7 @@ export class WebviewUtils {
 
   path2Uri = (path: string) => {
     let webview = this.webviewView.webview;
-    return webview.asWebviewUri(vscode.Uri.joinPath(vscode.Uri.file(__dirname),'../..','src','assets', path));
+    return webview.asWebviewUri(vscode.Uri.joinPath(vscode.Uri.file(__dirname),'../..','resources', path));
   };
 
   img2Uri = (path: string) => {
