@@ -1,14 +1,14 @@
-const vscode = acquireVsCodeApi();
+const vscode = acquireVsCodeApi()
 
 // 监听图片点击事件
-let imgEl = document.querySelector(".demo-image img");
-imgEl.addEventListener("click", function (e) {
+let imgEl = document.querySelector('.demo-image img')
+imgEl.addEventListener('click', function (e) {
   // 获取图片的 src
-  let src = imgEl.getAttribute("src");
+  let src = imgEl.getAttribute('src')
   // 图片的filename
-  let filename = src.split("/").pop();
+  let filename = src.split('/').pop()
   vscode.postMessage({
-    command: "openImage",
-    message: filename,
-  });
-});
+    command: 'openImage',
+    message: filename
+  })
+})
