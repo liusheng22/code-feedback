@@ -1,26 +1,116 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/naming-convention": "warn",
+    "curly": "warn",
+    "eqeqeq": "warn",
+    "no-throw-literal": "warn",
+    // 无分号
+    "semi": ["error", "never"],
+    // 不允许尾随逗号
+    "comma-dangle": ["error", "never"],
+    // 无多余空格
+    "no-multi-spaces": "error",
+    // 无多余空行
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
     ],
-    "rules": {
-        "@typescript-eslint/naming-convention": "warn",
-        "@typescript-eslint/semi": "warn",
-        "curly": "warn",
-        "eqeqeq": "warn",
-        "no-throw-literal": "warn",
-        "semi": "off",
-        // 使用2个空格缩进
-        "indent": ["warn", 2]
-    },
-    "ignorePatterns": [
-        "out",
-        "dist",
-        "**/*.d.ts"
-    ]
+    // 末尾行必须有空行
+    "eol-last": ["error", "always"],
+    // [] 可以不换行
+    "array-bracket-newline": ["error", "consistent"],
+    // 缩进使用空格
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "ignoredNodes": ["TemplateLiteral"]
+      }
+    ],
+    // key使用单引号
+    "quote-props": ["error", "as-needed"],
+    // 使用单引号
+    "quotes": ["error", "single"],
+    // 函数前后空格
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    // object-curly-spacing
+    "object-curly-spacing": ["error", "always"],
+    // object-curly-newline
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": {
+          "multiline": true
+        },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 3
+        }
+      }
+    ],
+    // object-property-newline
+    "object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ],
+    // no-unexpected-multiline
+    "no-unexpected-multiline": 0,
+    // key-spacing
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    // keyword-spacing
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    // no-empty-pattern
+    "no-empty-pattern": 2,
+    // no-sparse-arrays
+    "no-sparse-arrays": 2,
+    // operator-linebreak
+    "operator-linebreak": ["error", "before"],
+    // 禁止使用var
+    "no-var": "error",
+    // 注释 // 或 /* 必须跟随至少一个空白
+    "spaced-comment": ["error", "always"],
+    // 允许使用any
+    "@typescript-eslint/no-explicit-any": 1
+    // enum 枚举中最后不需要逗号
+  },
+  "ignorePatterns": [
+    "out",
+    "dist",
+    "**/*.d.ts"
+  ]
 }

@@ -1,17 +1,21 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-    // save auto format on save
-    "editor.formatOnSave": true,
-    // format with eslint
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "files.exclude": {
-        "out": false // set this to true to hide the "out" folder with the compiled JS files
-    },
-    "search.exclude": {
-        "out": true // set this to false to include "out" folder in search results
-    },
-    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-    "typescript.tsc.autoDetect": "off"
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    "out": false // set this to true to hide the "out" folder with the compiled JS files
+  },
+  "[typescript]": {
+    // eslit
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "cSpell.words": [
+    "datetime",
+    "typeorm"
+  ]
 }
