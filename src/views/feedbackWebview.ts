@@ -1,7 +1,7 @@
-import { WebviewView, WebviewViewProvider } from 'vscode';
-import * as vscode from 'vscode';
-import { WebviewHtml } from '../webview/feedback-html';
-import { post } from '../request/index';
+import { WebviewView, WebviewViewProvider } from 'vscode'
+import * as vscode from 'vscode'
+import { WebviewHtml } from '../webview/feedback-html'
+import { post } from '../request/index'
 
 export class FeedbackWebView implements WebviewViewProvider {
   constructor(
@@ -9,46 +9,48 @@ export class FeedbackWebView implements WebviewViewProvider {
   ) {
   }
 
-  public static viewId: string = 'code-snippet';
-  public static webviewView: any;
-  public static feedbackApi: string = 'http://localhost/feedback';
+  public static viewId: string = 'code-snippet'
+  public static webviewView: any
+  public static feedbackApi: string = 'http://localhost/feedback'
 
   resolveWebviewView(webviewView: WebviewView): void | Thenable<void> {
     // 开启js
     webviewView.webview.options = {
-      enableScripts: true,
-    };
+      enableScripts: true
+    }
 
-    let webview = webviewView.webview;
-    FeedbackWebView.webviewView = webviewView;
+    let webview = webviewView.webview
+    FeedbackWebView.webviewView = webviewView
 
-    new WebviewHtml(webviewView);
+    new WebviewHtml(webviewView)
 
     // 暴露出来webview
-    this.context.globalState.update('feedbackWebview', webview);
+    this.context.globalState.update('feedbackWebview', webview)
 
-    webviewView.webview.html = WebviewHtml.html;
+    webviewView.webview.html = WebviewHtml.html
 
     // 收到webview的消息
     webview.onDidReceiveMessage((data) => {
-      let { command, message } = data;
+      let { command, message } = data
 
       switch (command) {
-      case 'submitFeedback':
-        this.submitFeedback(message);
-        vscode.window.showInformationMessage("提交成功，感谢您的反馈！");
-        break;
-      default:
-        break;
+        case 'submitFeedback':
+          this.submitFeedback(message)
+          vscode.window.showInformationMessage('提交成功，感谢您的反馈！')
+          break
+        default:
+          break
       }
-    });
+    })
   }
 
   submitFeedback(data: any) {
-    post(FeedbackWebView.feedbackApi, JSON.stringify(data));
+    post(FeedbackWebView.feedbackApi, JSON.stringify(data))
   }
 
   postMessage(webviewView: WebviewView, command: any, message: any, reply?: any) {
-    webviewView.webview.postMessage({ command, message });
+    webviewView.webview.postMessage({
+      command, message 
+    })
   }
 }

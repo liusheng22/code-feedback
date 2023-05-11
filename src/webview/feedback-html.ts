@@ -1,39 +1,39 @@
-import { WebviewView } from "vscode";
-import * as vscode from 'vscode';
-import preCodeSnippet from "./pre-code";
-import { WebviewUtils } from "../utils/uri";
+import { WebviewView } from 'vscode'
+import * as vscode from 'vscode'
+import preCodeSnippet from './pre-code'
+import { WebviewUtils } from '../utils/uri'
 
 export class WebviewHtml {
 
   constructor(
     private readonly webviewView: WebviewView
   ) {
-    this.initHtml();
+    this.initHtml()
   }
 
-  public static html: string = '';
+  public static html: string = ''
 
   initHtml() {
-    const webviewView = this.webviewView;
-    const webview = webviewView.webview;
+    const webviewView = this.webviewView
+    const webview = webviewView.webview
     
     // 开启js
     webview.options = {
-      enableScripts: true,
-    };
+      enableScripts: true
+    }
 
-    let webviewUtils = new WebviewUtils(webviewView);
-    let { path2Uri } = webviewUtils;
+    let webviewUtils = new WebviewUtils(webviewView)
+    let { path2Uri } = webviewUtils
     
     // 引用webview.js
-    const webviewJsUri = path2Uri('feedback/webview.js');
+    const webviewJsUri = path2Uri('feedback/webview.js')
     // 引用webview.css
-    const webviewCssUri = path2Uri('feedback/webview.css');
+    const webviewCssUri = path2Uri('feedback/webview.css')
 
     // 引用highlight.js
-    const highlightJsUri = path2Uri('highlight/index.js');
+    const highlightJsUri = path2Uri('highlight/index.js')
     // 引用highlight.css
-    const highlightCssUri = path2Uri('highlight/index.css');
+    const highlightCssUri = path2Uri('highlight/index.css')
 
     WebviewHtml.html = `
       <!DOCTYPE html>
@@ -84,6 +84,6 @@ export class WebviewHtml {
         <script>hljs.highlightAll();</script>
       </body>
       </html>
-    `;
+    `
   }
 }

@@ -1,6 +1,6 @@
-import { WebviewView } from "vscode";
-import * as vscode from 'vscode';
-import { WebviewUtils } from '../utils/uri';
+import { WebviewView } from 'vscode'
+import * as vscode from 'vscode'
+import { WebviewUtils } from '../utils/uri'
 
 export class WebviewHtml {
 
@@ -8,28 +8,28 @@ export class WebviewHtml {
     private readonly webviewView: WebviewView,
     private readonly context: vscode.ExtensionContext
   ) {
-    this.initHtml();
+    this.initHtml()
   }
 
-  public static html: string = '';
+  public static html: string = ''
 
   initHtml() {
-    const webviewView = this.webviewView;
-    const webview = webviewView.webview;
+    const webviewView = this.webviewView
+    const webview = webviewView.webview
 
     // 开启js
     webview.options = {
-      enableScripts: true,
-    };
+      enableScripts: true
+    }
 
-    let webviewUtils = new WebviewUtils(webviewView);
-    let { path2Uri } = webviewUtils;
+    let webviewUtils = new WebviewUtils(webviewView)
+    let { path2Uri } = webviewUtils
     
     // 引用js
-    const webviewJsUri = path2Uri('demo/webview.js');
+    const webviewJsUri = path2Uri('demo/webview.js')
 
     // demo gif
-    const demoImageUri = path2Uri('image/demonstration.gif');
+    const demoImageUri = path2Uri('image/demonstration.gif')
 
     WebviewHtml.html = `
       <!DOCTYPE html>
@@ -68,6 +68,6 @@ export class WebviewHtml {
         }
       </style>
       </html>
-    `;
+    `
   }
 }

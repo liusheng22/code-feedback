@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
 
 export class WebviewUtils {
   constructor(
@@ -7,12 +7,12 @@ export class WebviewUtils {
   ) {}
 
   path2Uri = (path: string) => {
-    let webview = this.webviewView.webview;
-    return webview.asWebviewUri(vscode.Uri.joinPath(vscode.Uri.file(__dirname),'../..','resources', path));
-  };
+    let webview = this.webviewView.webview
+    return webview.asWebviewUri(vscode.Uri.joinPath(vscode.Uri.file(__dirname),'../..','resources', path))
+  }
 
   img2Uri = (path: string) => {
-    let webview = this.webviewView.webview;
-    webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'src', 'assets', path));
-  };
+    let webview = this.webviewView.webview
+    webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'src', 'assets', path))
+  }
 }
