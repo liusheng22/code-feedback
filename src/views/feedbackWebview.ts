@@ -11,7 +11,7 @@ export class FeedbackWebView implements WebviewViewProvider {
 
   public static viewId: string = 'code-snippet'
   public static webviewView: any
-  public static feedbackApi: string = 'http://localhost/feedback'
+  public static feedbackApi: string = 'http://localhost:2000/feedback/add'
 
   resolveWebviewView(webviewView: WebviewView): void | Thenable<void> {
     // 开启js

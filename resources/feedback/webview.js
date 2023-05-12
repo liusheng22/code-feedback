@@ -5,11 +5,11 @@ let useCodeId = ''
 // 按钮 - 提交反馈
 document.querySelector('.btn').addEventListener('click', () => {
   let anonymous = document.querySelector('#anonymous').checked
-  let feedbackEl = document.querySelector('.code-snippet')
-  let feedback = feedbackEl.innerText
+  let codeSnippetEl = document.querySelector('.code-snippet')
+  let snippet = codeSnippetEl.innerText
   let authorEl = document.querySelector('.code-author-list .name')
   let authorArr = authorEl.innerText.split('、')
-  let author = authorArr.split('、')
+  let author = authorArr.join(',')
   let submitterEl = document.querySelector('.feedback-submitter__name .name')
   let submitter = submitterEl.innerText
   let codeIdEl = document.querySelector('.code-id')
@@ -17,23 +17,24 @@ document.querySelector('.btn').addEventListener('click', () => {
   let type = document.querySelector('#feedback-type').value
   let btnEl = document.querySelector('.btn')
   submitter = anonymous ? '' : submitter
+  let isAnonymous = anonymous ? 1 : 0
 
   let data = {
-    anonymous,
-    feedback,
+    codeId,
     author,
+    snippet,
     submitter,
     type,
-    codeId
+    isAnonymous
   }
   console.log('数据提交 =>', data)
 
-  if (!feedback.trim()) {
+  if (!snippet.trim()) {
     return
   }
 
   if (useCodeId && useCodeId === codeId) {
-    feedbackEl.innerHTML = '// 已经提交过了，重写选择一段代码再提交吧！'
+    codeSnippetEl.innerHTML = '// 已经提交过了，重写选择一段代码再提交吧！'
     hljs.highlightAll()
     return
   }
@@ -45,7 +46,7 @@ document.querySelector('.btn').addEventListener('click', () => {
 
   // 提交成功后，清空数据
   useCodeId = codeId
-  feedbackEl.innerHTML = '// 提交成功，感谢您的反馈！'
+  codeSnippetEl.innerHTML = '// 提交成功，感谢您的反馈！'
   authorEl.innerText = ''
   submitterEl.innerText = ''
   btnEl.style.display = 'none'

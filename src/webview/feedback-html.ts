@@ -56,10 +56,10 @@ export class WebviewHtml {
         <div class="feedback-type-title">反馈类型：</div>
         <div class="feedback-type">
           <select name="feedback-type" id="feedback-type">
-            <option value="1">最佳实现，学习一下</option>
-            <option value="2">有点东西，但是不多</option>
-            <option value="3">有点不妙，有待优化</option>
-            <option value="4">很有问题，需要重构</option>
+            <option value="4">最佳实现，学习一下</option>
+            <option value="3">有点东西，但是不多</option>
+            <option value="2">有点不妙，有待优化</option>
+            <option value="1">很有问题，需要重构</option>
           </select>
         </div>
 
